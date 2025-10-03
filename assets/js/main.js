@@ -1,3 +1,6 @@
+// Original template by Bedimcode
+// Modified by Solagbade Abdulmalik, 2025
+
 /* ==================== BANNER SLIDER AUTO ==================== */
 let counter = 1;
 setInterval(() => {
@@ -159,5 +162,6 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
 
 
