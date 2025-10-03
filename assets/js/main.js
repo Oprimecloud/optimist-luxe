@@ -1,21 +1,35 @@
+/* ==================== BANNER SLIDER AUTO ==================== */
+let counter = 1;
+setInterval(() => {
+  const radio = document.getElementById('radio' + counter);
+  if (radio) {
+    radio.checked = true;
+  }
+  counter++;
+  if (counter > 3) {  // Change "3" if you add more slides
+    counter = 1;
+  }
+}, 1); // Change every 5 seconds
+
 /*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close')
+      navClose = document.getElementById('nav-close');
 
-/* Menu show */
+// Open
 if(navToggle){
     navToggle.addEventListener('click', () =>{
         navMenu.classList.add('show-menu')
     })
 }
 
-/* Menu hidden */
+// Close
 if(navClose){
     navClose.addEventListener('click', () =>{
         navMenu.classList.remove('show-menu')
     })
 }
+
 
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link')
@@ -145,3 +159,5 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+

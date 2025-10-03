@@ -1,8 +1,23 @@
+                <!-- Google Analytics (GA4) -->
+                <!-- Replace G-XXXXXXXXXX with your Measurement ID -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-XXXXXXXXXX');
+                </script>
  <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Optimist Luxe is a premier watch brand collector, offering luxury, style, and positivity. Discover exclusive, elegant, and durable watches for every occasion.">
+    <meta name="keywords" content="luxury watches, Optimist Luxe, buy watches, exclusive watches, stylish watches, durable watches, watch collection, Nigeria watches, men watches, women watches, premium watches, affordable watches">
+    <link rel="canonical" href="https://optimistluxe.netlify.app/">
 
         <!--=============== FAVICON ===============-->
         <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
@@ -16,29 +31,63 @@
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="assets/css/styles.css">
 
-        <title>Responsive watches website - Bedimcode</title>
+                <title>Optimist Luxe | Luxury Watches in Nigeria</title>
+                <!-- Open Graph Meta Tags for Social Sharing -->
+                <meta property="og:title" content="Optimist Luxe | Luxury Watches in Nigeria" />
+                <meta property="og:description" content="Optimist Luxe is a premier watch brand collector, offering luxury, style, and positivity. Discover exclusive, elegant, and durable watches for every occasion." />
+                <meta property="og:image" content="https://optimistluxe.netlify.app/assets/img/optimistluxe.jpg" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://optimistluxe.netlify.app/" />
+
+                <!-- Twitter Card Meta Tags -->
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Optimist Luxe | Luxury Watches in Nigeria" />
+                <meta name="twitter:description" content="Optimist Luxe is a premier watch brand collector, offering luxury, style, and positivity. Discover exclusive, elegant, and durable watches for every occasion." />
+                <meta name="twitter:image" content="https://optimistluxe.netlify.app/assets/img/optimistluxe.jpg" />
+
+                <!-- Schema.org Structured Data (JSON-LD) -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Optimist Luxe",
+                    "url": "https://optimistluxe.netlify.app/",
+                    "logo": "https://optimistluxe.netlify.app/assets/img/optimistluxe.jpg",
+                    "contactPoint": [{
+                        "@type": "ContactPoint",
+                        "telephone": "+234-811-567-2822",
+                        "contactType": "customer service",
+                        "email": "optimistluxe@gmail.com"
+                    }],
+                    "sameAs": [
+                        "https://www.instagram.com/optimistluxe",
+                        "https://www.facebook.com/profile.php?id=61581380216631",
+                        "https://www.tiktok.com/@optimisticluxe?_t=ZS-8zxxTOthdEm&_r=1",
+                        "https://Snapchat.com/t/SMcqvnGk"
+                    ]
+                }
+                </script>
     </head>
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
                 <a href="#" class="nav__logo">
-                    <i class='bx bxs-watch nav__logo-icon'></i> Rolex
+                    <i class='bx bxs-watch nav__logo-icon'></i> Optimist Luxe
                 </a>
-
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">Home</a>
+                            <a href="#banner" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#featured" class="nav__link">Featured</a>
+                            <a href="#featured" class="nav__link">Recommendation</a>
                         </li>
                         <li class="nav__item">
                             <a href="#products" class="nav__link">Products</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#new" class="nav__link">New</a>
+                            <a href="#new" class="nav__link">New stock</a>
                         </li>
                     </ul>
 
@@ -61,9 +110,69 @@
                 </div>
             </nav>
         </header>
+        <!--==================== BANNER SLIDER ====================-->
+        <section class="banner" id="banner">
+            <div class="slider">
+            <!-- Radio buttons for navigation -->
+                <div class="slides">
+                    <input type="radio" name="radio-btn" id="radio1" checked>
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                <!-- Slide images -->
+                    <div class="slide first">
+                        <video autoplay muted loop playsinline
+                            class="banner-video"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
+                            <source src="assets/img/vv.mp4" type="video/mp4">
+                        </video>
+                    <div class="slide">
+                <!-- Automatic navigation -->
+                    <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                </div>
+            </div>
+
+                <!-- Manual navigation -->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== STORY ====================-->
+            <section class="story section container">
+                <div id="story" class="story__container grid">
+                    <div class="story__data">
+                        <h2 class="section__title story__section-title">
+                            Our Story
+                        </h2>
+    
+                        <h1 class="story__title">
+                            Redefining Luxury <br> Inspiring Lifestyle
+                        </h1>
+    
+                        <p class="story__description">
+                            Optimist luxe was born from a simple belief that a true luxury isn't just about what you wear, but how it makes you feel.
+                        </p>
+    
+                        <a href="https://chat.whatsapp.com/D0Qp9028m89GwcUCsBNMgU" target="_blank" class="button button--small">Dress with confidence</a>
+                    </div>
+
+                    <div class="story__images">
+                        <img src="assets/img/IMG_0993.jpg" alt="Optimist Luxe Story Image" class="story__img">
+                        <div class="story__square"></div>
+                    </div>
+                </div>
+            </section>
+            
+        
 
         <!--==================== CART ====================-->
-        <div class="cart" id="cart">
+        <!-- <div class="cart" id="cart">
             <i class='bx bx-x cart__close' id="cart-close"></i>
 
             <h2 class="cart__title-center">My Cart</h2>
@@ -71,12 +180,12 @@
             <div class="cart__container">
                 <article class="cart__card">
                     <div class="cart__box">
-                        <img src="assets/img/featured1.png" alt="" class="cart__img">
+                        <img src="assets/" alt="" class="cart__img">
                     </div>
 
                     <div class="cart__details">
-                        <h3 class="cart__title">Jazzmaster</h3>
-                        <span class="cart__price">$1050</span>
+                        <h3 class="cart__title">Hublot</h3>
+                        <span class="cart__price">₦20,000</span>
 
                         <div class="cart__amount">
                             <div class="cart__amount-content">
@@ -84,7 +193,7 @@
                                     <i class='bx bx-minus' ></i>
                                 </span>
 
-                                <span class="cart__amount-number">1</span>
+                                <span class="cart__amount-number">0</span>
 
                                 <span class="cart__amount-box">
                                     <i class='bx bx-plus' ></i>
@@ -155,122 +264,133 @@
                 <span class="cart__prices-item">3 items</span>
                 <span class="cart__prices-total">$2880</span>
             </div>
-        </div>
+        </div> -->
 
         <!--==================== MAIN ====================-->
         <main class="main">
-            <!--==================== HOME ====================-->
-            <section class="home" id="home">
-                <div class="home__container container grid">
-                    <div class="home__img-bg">
-                        <img src="assets/img/home.png" alt="" class="home__img">
-                    </div>
-    
-                    <div class="home__social">
-                        <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
-                            Facebook
-                        </a>
-                        <a href="https://twitter.com/" target="_blank" class="home__social-link">
-                            Twitter
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
-                            Instagram
-                        </a>
-                    </div>
-    
-                    <div class="home__data">
-                        <h1 class="home__title">NEW WATCH <br> COLLECTIONS B720</h1>
-                        <p class="home__description">
-                            Latest arrival of the new imported watches of the B720 series, 
-                            with a modern and resistant design.
-                        </p>
-                        <span class="home__price">$1245</span>
-
-                        <div class="home__btns">
-                            <a href="#" class="button button--gray button--small">
-                                Discover
-                            </a>
-
-                            <button class="button home__button">ADD TO CART</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
 
             <!--==================== FEATURED ====================-->
             <section class="featured section container" id="featured">
                 <h2 class="section__title">
-                    Featured
+                    Most Picked
                 </h2>
-
-                <div class="featured__container grid">
+                    <div class="products__container grid">
                     <article class="featured__card">
                         <span class="featured__tag">Sale</span>
 
-                        <img src="assets/img/featured1.png" alt="" class="featured__img">
+                        <img src="assets/img/PHOTO-2025-09-08-16-06-29 5.jpg" alt="Valenzo luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="featured__img">
 
                         <div class="featured__data">
-                            <h3 class="featured__title">Jazzmaster</h3>
-                            <span class="featured__price">$1050</span>
+                            <h3 class="featured__title">Valenzo</h3>
+                            <!-- <p style="margin:5px 0; font-weight:bold; color:#999"><del>₦30,000</del></p>
+                            <span class="featured__price">₦27,000</span> -->
                         </div>
 
-                        <button class="button featured__button">ADD TO CART</button>
+                        <a href="https://wa.me/2348115672822?text=Send%20me%20availabe%20Valenzo%20design" 
+                            class="button featured__button" 
+                            target="_blank">
+                            VIEW
+                        </a>
+                    </article>
+
+
+                    <article class="featured__card">
+                        <span class="featured__tag">Sale</span>
+
+                        <img src="assets/img/image.png" alt="Poedagar luxury watch" style="border-radius: 9px; width: 75%;height: 60%"  class="featured__img">
+
+                        <div class="featured__data">
+                            <h3 class="featured__title">poedagar</h3>
+                            <!-- <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦40,000</del></p>
+                            <span class="featured__price">₦34,000</span> -->
+                        </div>
+
+                        <a href="https://wa.me/2348115672822?text=Send%20me%20availabe%20Poedagar%20design" 
+                            class="button featured__button" 
+                            target="_blank">
+                            VIEW
+                        </a>
                     </article>
 
                     <article class="featured__card">
                         <span class="featured__tag">Sale</span>
 
-                        <img src="assets/img/featured2.png" alt="" class="featured__img">
+                        <img src="assets/img/IMG_1004 copy.PNG" alt="G-shock luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="featured__img">
 
                         <div class="featured__data">
-                            <h3 class="featured__title">Ingersoll</h3>
-                            <span class="featured__price">$250</span>
+                            <h3 class="featured__title">G-shock</h3>
+                            <!-- <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦50,000</del></p>
+                            <span class="featured__price">₦45,000</span> -->
                         </div>
 
-                        <button class="button featured__button">ADD TO CART</button>
+                        <a href="https://wa.me/2348115672822?text=Send%20me%20availabe%20G-shock%20design" 
+                            class="button featured__button" 
+                            target="_blank">
+                            VIEW
+                        </a>
                     </article>
 
                     <article class="featured__card">
                         <span class="featured__tag">Sale</span>
 
-                        <img src="assets/img/featured3.png" alt="" class="featured__img">
+                        <img src="assets/img/image copy.png" alt="Richard Mille luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="featured__img">
 
                         <div class="featured__data">
-                            <h3 class="featured__title">Rose gold</h3>
-                            <span class="featured__price">$890</span>
+                            <h3 class="featured__title">Richard mille</h3>
+                              <!-- <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦120,000</del></p>
+                            <span class="featured__price">₦95,000</span> -->
+                            <!-- <span class="featured__price">#75,000</span> -->
                         </div>
 
-                        <button class="button featured__button">ADD TO CART</button>
+                        <a href="https://wa.me/2348115672822?text=Send%20me%20availabe%20Richard%20Mille%20design" 
+                            class="button featured__button" 
+                            target="_blank">
+                            VIEW
+                        </a>
                     </article>
                 </div>
             </section>
-
-            <!--==================== STORY ====================-->
-            <section class="story section container">
-                <div class="story__container grid">
-                    <div class="story__data">
-                        <h2 class="section__title story__section-title">
-                            Our Story
-                        </h2>
+            <!--==================== HOME ====================-->
+            <section class="home" id="">
+                <div class="home__container container grid">
+                    <div class="home__img-bg">
+                        <img src="assets/img/PHOTO-2025-09-08-16-06-30 7.jpg" alt="" class="home__img">
+                    </div>
     
-                        <h1 class="story__title">
-                            Inspirational Watch of <br> this year
-                        </h1>
+                    <div class="home__social">
+                        <a href="https://www.tiktok.com/@optimisticluxe?_t=ZS-8zxxTOthdEm&_r=1" target="_blank" class="home__social-link">
+                            Tiktok
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61581380216631" target="_blank" class="home__social-link">
+                            Facebook
+                        </a>
+                        <a href="https://www.instagram.com/optimistluxe" target="_blank" class="home__social-link">
+                            Instagram
+                        </a>
+                        <a href="https://Snapchat.com/t/SMcqvnGk" target="_blank" class="home__social-link">
+                            Snapchat
+                        </a>
+                    </div>
+                    
     
-                        <p class="story__description">
-                            The latest and modern watches of this year, is available in various 
-                            presentations in this store, discover them now.
+                    <div class="home__data">
+                        <h1 class="home__title">NEW WATCH <br> COLLECTIONS</h1>
+                        <p class="home__description">
+                            Discover the latest arrival from our exclusive series — finely crafted imported watches designed for elegance, durability, and modern style. Perfect for every occasion, built to last.
                         </p>
-    
-                        <a href="#" class="button button--small">Discover</a>
-                    </div>
+                        <span class="home__price">₦20,000</span>
 
-                    <div class="story__images">
-                        <img src="assets/img/story.png" alt="" class="story__img">
-                        <div class="story__square"></div>
+                        <div class="home__btns">
+                            <a href="https://chat.whatsapp.com/D0Qp9028m89GwcUCsBNMgU" target="_blank" class="button button--gray button--small">
+                                Explore Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
+
+            
 
             <!--==================== PRODUCTS ====================-->
             <section class="products section container" id="products">
@@ -279,60 +399,94 @@
                 </h2>
 
                 <div class="products__container grid">
-                    <article class="products__card">
-                        <img src="assets/img/product1.png" alt="" class="products__img">
+                    <div id="Hublot Geneve" class="products__card">
+                        <img src="assets/img/hublotproduct1.jpg" alt="Hublot Geneve luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
 
-                        <h3 class="products__title">Spirit rose</h3>
-                        <span class="products__price">$1500</span>
+                        <h3 class="products__title">Hublot Geneve</h3>
+                        <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦25,000</del></p>
+                            <span class="featured__price">₦20,000</span>
+
+                       <button class="products__button">
+                            <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20hublot%20for%20₦20,000" 
+                                    class='bx bx-shopping-bag'
+                                    target="_blank">    
+                            </a>
+                        </button>
+                    </div>
+
+                    <div id="skmei" class="products__card">
+                        <img src="assets/img/skmeiproduct1.jpg" alt="Skmei luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
+
+                        <h3 class="products__title">skmei</h3>
+                       <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦35,000</del></p>
+                            <span class="featured__price">₦25,000</span>
+                        <button class="products__button">
+                            <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20skmei%20for%20₦25,000" 
+                                    class='bx bx-shopping-bag'
+                                    target="_blank">    
+                            </a>
+                        </button>
+                    </div>
+
+                    <div id="g-shock" class="products__card">
+                        <img src="assets/img/g-shockproduct1.jpg" alt="G-shock luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
+
+                        <h3 class="products__title">G-shock</h3>
+                        <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦50,000</del></p>
+                            <span class="featured__price">₦45,000</span>
+
+                       <button class="products__button">
+                            <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20G-shock%20for%20₦45,000" 
+                                    class='bx bx-shopping-bag'
+                                    target="_blank">    
+                            </a>
+                        </button>
+                    </div>
+
+                    <div id="poedagar" class="products__card">
+                        <img src="assets/img/poadagarprod1.jpg" alt="Poedagar luxury watch" style="border-radius: 9px; width: 75%;height: 60%;"  class="products__img">
+
+                        <h3 class="products__title">poedagar</h3>
+                        <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦45,000</del></p>
+                            <span class="featured__price">₦35,000</span>
 
                         <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
+                            <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20poedagar%20for%20₦35,000" 
+                                    class='bx bx-shopping-bag'
+                                    target="_blank">    
+                            </a>
                         </button>
-                    </article>
+                    </div>
 
-                    <article class="products__card">
-                        <img src="assets/img/product2.png" alt="" class="products__img">
+                    <div id="Valenzo" class="products__card">
+                        <img src="assets/img/valenzopro1.jpg" alt="Valenzo luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
 
-                        <h3 class="products__title">Khaki pilot</h3>
-                        <span class="products__price">$1350</span>
+                        <h3 class="products__title">Valenzo</h3>
+                        <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦30,000</del></p>
+                            <span class="featured__price">₦27,000</span>
 
                         <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
+                            <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20Valenzo%20for%20₦27,000" 
+                                    class='bx bx-shopping-bag'
+                                    target="_blank">    
+                            </a>
                         </button>
-                    </article>
+                    </div>
 
-                    <article class="products__card">
-                        <img src="assets/img/product3.png" alt="" class="products__img">
+                    <div id="Tissort" class="products__card">
+                        <img src="assets/img/tissortprod1.jpg" alt="Tissort luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
 
-                        <h3 class="products__title">Jubilee black</h3>
-                        <span class="products__price">$870</span>
+                        <h3 class="products__title">tissort</h3>
+                        <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦25,000</del></p>
+                            <span class="featured__price">₦21,000</span>
 
                         <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
+                            <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20tissort%20for%20₦21,000" 
+                                    class='bx bx-shopping-bag'
+                                    target="_blank">    
+                            </a>
                         </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="assets/img/product4.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Fosil me3</h3>
-                        <span class="products__price">$650</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="assets/img/product5.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Duchen</h3>
-                        <span class="products__price">$950</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
+                    </div>
                 </div>
             </section>
 
@@ -346,18 +500,16 @@
                                     <i class='bx bxs-quote-alt-left' ></i>
                                 </div>
                                 <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
+                                    This brand elevated my entire look. I used to overlook accessories, but now this wristwear completes every outfit.
                                 </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
+                                <h3 class="testimonial__date">August 27. 2025</h3>
         
                                 <div class="testimonial__perfil">
-                                    <img src="assets/img/testimonial1.jpg" alt="" class="testimonial__perfil-img">
+                                    <img src="assets/img/og.jpg" alt="Samson testimonial" class="testimonial__perfil-img">
         
                                     <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Lee Doe</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
+                                        <span class="testimonial__perfil-name">Samson</span>
+                                        <span class="testimonial__perfil-detail">Og Naira🤑</span>
                                     </div>
                                 </div>
                             </div>
@@ -367,18 +519,16 @@
                                     <i class='bx bxs-quote-alt-left' ></i>
                                 </div>
                                 <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
+                                    I’m beyond impressed, I've received more compliments in the last month than I ever did wearing designer pieces. This isn’t just an accessory; it’s a statement. You’ve earned a lifelong customer.
                                 </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
+                                <h3 class="testimonial__date">September 17. 2025</h3>
         
                                 <div class="testimonial__perfil">
-                                    <img src="assets/img/testimonial2.jpg" alt="" class="testimonial__perfil-img">
+                                    <img src="assets/img/ogoi.jpg" alt="Emmanuel testimonial" class="testimonial__perfil-img">
         
                                     <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Samantha Mey</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
+                                        <span class="testimonial__perfil-name">Emmanuel</span>
+                                        <span class="testimonial__perfil-detail">Glory Ogo💹</span>
                                     </div>
                                 </div>
                             </div>
@@ -388,18 +538,16 @@
                                     <i class='bx bxs-quote-alt-left' ></i>
                                 </div>
                                 <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
+                                    It’s rare to find something that combines elegance, durability, and originality in one piece. Trust me, you won't regret adding this to your collection.
                                 </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
+                                <h3 class="testimonial__date">September 17. 2025</h3>
         
                                 <div class="testimonial__perfil">
-                                    <img src="assets/img/testimonial3.jpg" alt="" class="testimonial__perfil-img">
+                                    <img src="assets/img/isreal.jpg" alt="Isreal testimonial" class="testimonial__perfil-img">
         
                                     <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Raul Zaman</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
+                                        <span class="testimonial__perfil-name">Isreal</span>
+                                        <span class="testimonial__perfil-detail"></span>
                                     </div>
                                 </div>
                             </div>
@@ -412,12 +560,6 @@
                             <i class='bx bx-left-arrow-alt' ></i>
                         </div>
                     </div>
-
-                    <div class="testimonial__images">
-                        <div class="testimonial__square"></div>
-                        <img src="assets/img/testimonial.png" alt="" class="testimonial__img">
-                    </div>
-                </div>
             </section>
 
             <!--==================== NEW ====================-->
@@ -431,77 +573,117 @@
                         <div class="swiper-wrapper">
                             <article class="new__card swiper-slide">
                                 <span class="new__tag">New</span>
-        
-                                <img src="assets/img/new1.png" alt="" class="new__img">
+
+                                <video autoplay muted loop playsinline 
+                        
+                                    style="width: 50%; height: 50%; object-fit: cover; border-radius: 8px;">
+                                    <source src="assets/img/g-shock.mp4" type="video/mp4">
+                                </video>
         
                                 <div class="new__data">
-                                    <h3 class="new__title">Longines rose</h3>
-                                    <span class="new__price">$980</span>
+                                    <h3 class="featured__title">G-shock</h3>
+                                    <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦50,000</del></p>
+                                    <span class="featured__price">₦45,000</span>
                                 </div>
         
-                                <button class="button new__button">ADD TO CART</button>
+                                <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20Valenzo%20for%20₦27,000" 
+                                    class="button featured__butto" 
+                                    target="_blank">
+                                    SHOP NOW
+                                </a>
                             </article>
 
                             <article class="new__card swiper-slide">
                                 <span class="new__tag">New</span>
         
-                                <img src="assets/img/new2.png" alt="" class="new__img">
+                                <video autoplay muted loop playsinline
+                        
+                                    style="width: 40%; height: 35%; object-fit: cover; border-radius: 8px;">
+                                    <source src="assets/img/cartier.mp4" type="video/mp4">
+                                </video>
         
                                 <div class="new__data">
-                                    <h3 class="new__title">Jazzmaster</h3>
-                                    <span class="new__price">$1150</span>
+                                    <h3 class="featured__title">Cartier</h3>
+                                    <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦40,000</del></p>
+                                    <span class="featured__price">₦35,000</span>
                                 </div>
         
-                                <button class="button new__button">ADD TO CART</button>
+                                <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20Valenzo%20for%20₦27,000" 
+                                    class="button featured__butto" 
+                                    target="_blank">
+                                    SHOP NOW
+                                </a>
                             </article>
 
                             <article class="new__card swiper-slide">
                                 <span class="new__tag">New</span>
         
-                                <img src="assets/img/new3.png" alt="" class="new__img">
+                                <video autoplay muted loop playsinline
+                        
+                                    style="width: 40%; height: 35%; object-fit: cover; border-radius: 8px;">
+                                    <source src="assets/img/skmei.mp4" type="video/mp4">
+                                </video>
         
                                 <div class="new__data">
-                                    <h3 class="new__title">Dreyfuss gold</h3>
-                                    <span class="new__price">$750</span>
+                                    <h3 class="featured__title">SKMEI</h3>
+                                    <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦35,000</del></p>
+                                    <span class="featured__price">₦25,000</span>
                                 </div>
         
-                                <button class="button new__button">ADD TO CART</button>
+                                <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20Valenzo%20for%20₦27,000" 
+                                    class="button featured__butto" 
+                                    target="_blank">
+                                    SHOP NOW
+                                </a>
                             </article>
 
                             <article class="new__card swiper-slide">
                                 <span class="new__tag">New</span>
         
-                                <img src="assets/img/new4.png" alt="" class="new__img">
+                                <video autoplay muted loop playsinline
+                        
+                                    style="width: 40%; height: 35%; object-fit: cover; border-radius: 8px;">
+                                    <source src="assets/img/audemars piguet.mp4" type="video/mp4">
+                                </video>
         
                                 <div class="new__data">
-                                    <h3 class="new__title">Portuguese rose</h3>
-                                    <span class="new__price">$1590</span>
+                                    <h3 class="featured__title">AUDEMARS PIGUET</h3>
+                                    <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦50,000</del></p>
+                                    <span class="featured__price">₦45,000</span>
                                 </div>
         
-                                <button class="button new__button">ADD TO CART</button>
+                                <a href="https://wa.me/2348115672822?text=Hello%20I%20want%20to%20order%20the%20Valenzo%20for%20₦27,000" 
+                                    class="button featured__butto" 
+                                    target="_blank">
+                                    SHOP NOW
+                                </a>
                             </article>                       
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!--==================== NEWSLETTER ====================-->
+            <!--==================== CONTACT  FORM ====================-->
             <section class="newsletter section container">
-                <div class="newsletter__bg grid">
-                    <div>
-                        <h2 class="newsletter__title">Subscribe Our <br> Newsletter</h2>
-                        <p class="newsletter__description">
-                            Don't miss out on your discounts. Subscribe to our email 
-                            newsletter to get the best offers, discounts, coupons, 
-                            gifts and much more.
-                        </p>
-                    </div>
+                <div id="Support" class="y">
+                    <form class="contact-form" action="https://formsubmit.co/abdulmaliksolagbade@gmail.com" method="POST">
+                        <h2>Contact Customer Service</h2>
 
-                    <form action="" class="newsletter__subscribe">
-                        <input type="email" placeholder="Enter your email" class="newsletter__input">
-                        <button class="button">
-                            SUBSCRIBE
-                        </button>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <input type="text" name="subject" placeholder="Subject" required>
+                        <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+
+                        <!-- Honeypot (Spam protection) -->
+                        <input type="text" name="_honey" style="display:none">
+    
+                            <!-- Disable CAPTCHA -->
+                        <input type="hidden" name="_captcha" value="false">
+    
+                        <!-- Redirect after submission -->
+                        <input type="hidden" name="_next" value="https://optimistluxe.netlify.app">
+
+                        <button type="submit">Send Message</button>
                     </form>
                 </div>
             </section>
@@ -514,9 +696,12 @@
                     <h3 class="footer__title">Our information</h3>
 
                     <ul class="footer__list">
-                        <li>1234 - Peru</li>
-                        <li>La Libertad 43210</li>
-                        <li>123-456-789</li>
+        
+                        <li>Location: Oja Sope Funis Majesty Villa, FUNAAB</li>
+                        <li>Email: <a href="mailto:optimistluxe@hotmail.com"style="text-decoration:underline;color: #000;">optimistluxe@gmail.com</a></li>
+                        <li>Tel1: <a href="tel:+234-811-567-2822"style="text-decoration:underline;color: #000;">+234-708-306-5573</a></li>
+                        <li>Tel2: <a href="tel:+234-811-567-2822"style="text-decoration:underline;color: #000;">+234-811-567-2822</a></li>
+                    </ul>
                     </ul>
                 </div>
                 <div class="footer__content">
@@ -524,16 +709,10 @@
 
                     <ul class="footer__links">
                         <li>
-                            <a href="#" class="footer__link">Support Center</a>
+                            <a href="#Support" class="footer__link">Customer Support</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Customer Support</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">About Us</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Copy Right</a>
+                            <a href="#story" class="footer__link">Our Story</a>
                         </li>
                     </ul>
                 </div>
@@ -543,16 +722,22 @@
 
                     <ul class="footer__links">
                         <li>
-                            <a href="#" class="footer__link">Road bikes</a>
+                            <a href="#Hublot Geneve" class="footer__link">Hublot Geneve</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Mountain bikes</a>
+                            <a href="#skmei" class="footer__link">Skmei</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Electric</a>
+                            <a href="#g-shock" class="footer__link">G-shock</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Accesories</a>
+                            <a href="#poedagar" class="footer__link">Poedagar</a>
+                        </li>
+                        <li>
+                            <a href="#Valenzo" class="footer__link">Valenzo</a>
+                        </li>
+                        <li>
+                            <a href="#Tissort" class="footer__link">Tissort</a>
                         </li>
                     </ul>
                 </div>
@@ -561,22 +746,24 @@
                     <h3 class="footer__title">Social</h3>
 
                     <ul class="footer__social">
-                        <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                            <i class='bx bxl-facebook'></i>
+                        <a href="https://www.tiktok.com/@optimisticluxe?_t=ZS-8zxxTOthdEm&_r=1" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-tiktok' ></i>
                         </a>
 
-                        <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                            <i class='bx bxl-twitter' ></i>
-                        </a>
-
-                        <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                        <a href="https://www.instagram.com/optimistluxe" target="_blank" class="footer__social-link">
                             <i class='bx bxl-instagram' ></i>
+                        </a>
+                        <a href="https://Snapchat.com/t/SMcqvnGk" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-snapchat' ></i>
+                        </a>
+                         <a href="https://www.facebook.com/profile.php?id=61581380216631" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-facebook'></i>
                         </a>
                     </ul>
                 </div>
             </div>
 
-            <span class="footer__copy">&#169; Bedimcode. All rigths reserved</span>
+            <span class="footer__copy">&#169; Optimist Luxe. All rigths reserved</span>
         </footer>
 
         <!--=============== SCROLL UP ===============-->

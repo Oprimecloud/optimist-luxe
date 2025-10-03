@@ -6,7 +6,7 @@
   --header-height: 3.5rem;
 
   /*========== Colors ==========*/
-  --first-color: hsl(31, 100%, 70%);
+  --first-color: #071018;;
   --button-color: hsl(0, 0%, 17%);
   --button-color-alt: hsl(0, 0%, 21%);
   --title-color: hsl(0, 0%, 15%);
@@ -25,6 +25,9 @@
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
+
+  /* ====hyperlinkcolor change=== */
+  
 
   /*========== Font weight ==========*/
   --font-medium: 500;
@@ -62,7 +65,9 @@
   padding: 0;
   margin: 0;
 }
-
+.bx-shopping-bag {
+  color: rgb(208, 187, 71);
+}
 html {
   scroll-behavior: smooth;
 }
@@ -105,6 +110,68 @@ button {
   border: none;
   outline: none;
 }
+/* <----banner-----> */
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full screen height */
+  overflow: hidden;
+}
+
+.banner-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps aspect ratio, covers like a background image */
+  z-index: -1; /* send video behind any content */
+}
+
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.slides {
+  width: 500%;
+  height: 100%;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 20%;
+  transition: 2s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Auto navigation buttons */
+.navigation-auto {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  bottom: 60px;
+  gap: 10px;
+}
+.navigation-auto div {
+  border: 2px solid #fff;
+  padding: 5px;
+  border-radius: 50%;
+}
+
 
 /*=============== THEME ===============*/
 /*========== Variables Dark theme ==========*/
@@ -305,13 +372,13 @@ body.dark-theme {
 }
 
 .home__img {
-  width: 240px;
+  width: 270px;
 }
 
 .home__img-bg {
   background-color: var(--first-color);
-  width: 258px;
-  height: 430px;
+  width: 210px;
+  height: 400px;
   padding-bottom: 2rem;
   display: flex;
   justify-content: center;
@@ -537,7 +604,7 @@ body.dark-theme {
   padding: .4rem;
   color: #fff;
   font-size: 1rem;
-  position: absolute;
+  position: center;
   right: 0;
   bottom: 0;
   transition: .3s;
@@ -1204,3 +1271,54 @@ body.dark-theme {
     right: 3rem;
   }
 }
+
+
+
+    .contact-form {
+      background: #ffffff;
+      padding: 40px 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: none;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      width: 100%;
+      background: #071018;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #1b1b1d;
+    }
+
+    @media (max-width: 600px) {
+      .contact-form {
+        padding: 30px 20px;
+      }
+    }
