@@ -226,7 +226,7 @@ const productsContainer = document.getElementById("product_container");
 
 products.map((product) => {
   productsContainer.innerHTML += `
-        <div id="Hublot Geneve" class="products__card">
+        <div id=${product.productName} class="products__card">
             <img src=${product.imgUrl} alt=${product.productName + " luxury watch"} style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
             <h3 class="products__title">${product.productName}</h3>
             <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦${product.oldPrice}</del></p>
