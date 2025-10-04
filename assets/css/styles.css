@@ -489,28 +489,8 @@ body.dark-theme {
 }
 
 .featured__img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+  height: 214px;
   margin-bottom: var(--mb-1);
-  border-radius: 9px;
-  max-width: 220px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* Responsive adjustments for featured section */
-@media screen and (max-width: 576px) {
-  .featured__container {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-  .featured__img {
-    max-width: 100%;
-    aspect-ratio: 1/1;
-    height: auto;
-  }
 }
 
 .featured__title, 
@@ -624,7 +604,7 @@ body.dark-theme {
   padding: .4rem;
   color: #fff;
   font-size: 1rem;
-  position: center;
+  position: absolute;
   right: 0;
   bottom: 0;
   transition: .3s;
