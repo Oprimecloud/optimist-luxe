@@ -489,8 +489,28 @@ body.dark-theme {
 }
 
 .featured__img {
-  height: 214px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
   margin-bottom: var(--mb-1);
+  border-radius: 9px;
+  max-width: 220px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Responsive adjustments for featured section */
+@media screen and (max-width: 576px) {
+  .featured__container {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .featured__img {
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+  }
 }
 
 .featured__title, 
