@@ -1,3 +1,7 @@
+import {getProducts} from './firebase.js'
+
+
+
 // Original template by Bedimcode
 // Modified by Solagbade Abdulmalik, 2025
 
@@ -177,50 +181,52 @@ themeButton.addEventListener("click", () => {
 const htmlTemplate = `
 
 `;
-const products = [
-  {
-    productName: "Hublot Geneve",
-    imgUrl: "assets/img/hublotproduct1.jpg",
-    oldPrice: "25,000",
-    price: "20,000",
-    message: "Hello I want to order the hublot for ₦20,000",
-  },
-  {
-    productName: "SKMEI",
-    imgUrl: "assets/img/skmeiproduct1.jpg",
-    oldPrice: "35,000",
-    price: "25,000",
-    message: "Hello I want to order the skmei for ₦25,000",
-  },
-  {
-    productName: "G-shock",
-    imgUrl: "assets/img/g-shockproduct1.jpg",
-    oldPrice: "50,000",
-    price: "45,000",
-    message: "Hello I want to order the G-shock for ₦45,000",
-  },
-  {
-    productName: "poedagar",
-    imgUrl: "assets/img/poadagarprod1.jpg",
-    oldPrice: "45,000",
-    price: "35,000",
-    message: "Hello I want to order the poedagar for ₦35,000",
-  },
-  {
-    productName: "Valenzo",
-    imgUrl: "assets/img/valenzopro1.jpg",
-    oldPrice: "30,000",
-    price: "27,000",
-    message: "Hello I want to order the Valenzo for ₦27,000",
-  },
-  {
-    productName: "tissort",
-    imgUrl: "assets/img/tissortprod1.jpg",
-    oldPrice: "25,000",
-    price: "21,000",
-    message: "Hello I want to order the hublot for ₦20,000",
-  },
-];
+// const products = [
+//   {
+//     productName: "Hublot Geneve",
+//     imgUrl: "assets/img/hublotproduct1.jpg",
+//     oldPrice: "25,000",
+//     price: "20,000",
+//     message: "Hello I want to order the hublot for ₦20,000",
+//   },
+//   {
+//     productName: "SKMEI",
+//     imgUrl: "assets/img/skmeiproduct1.jpg",
+//     oldPrice: "35,000",
+//     price: "25,000",
+//     message: "Hello I want to order the skmei for ₦25,000",
+//   },
+//   {
+//     productName: "G-shock",
+//     imgUrl: "assets/img/g-shockproduct1.jpg",
+//     oldPrice: "50,000",
+//     price: "45,000",
+//     message: "Hello I want to order the G-shock for ₦45,000",
+//   },
+//   {
+//     productName: "poedagar",
+//     imgUrl: "assets/img/poadagarprod1.jpg",
+//     oldPrice: "45,000",
+//     price: "35,000",
+//     message: "Hello I want to order the poedagar for ₦35,000",
+//   },
+//   {
+//     productName: "Valenzo",
+//     imgUrl: "assets/img/valenzopro1.jpg",
+//     oldPrice: "30,000",
+//     price: "27,000",
+//     message: "Hello I want to order the Valenzo for ₦27,000",
+//   },
+//   {
+//     productName: "tissort",
+//     imgUrl: "assets/img/tissortprod1.jpg",
+//     oldPrice: "25,000",
+//     price: "21,000",
+//     message: "Hello I want to order the hublot for ₦20,000",
+//   },
+// ];
+
+const products = await getProducts()
 
 const productsContainer = document.getElementById("product_container");
 
