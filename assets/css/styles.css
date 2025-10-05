@@ -489,7 +489,7 @@ body.dark-theme {
 }
 
 .featured__img {
-  height: 214px;
+  height: 90px;
   margin-bottom: var(--mb-1);
 }
 
@@ -573,14 +573,14 @@ body.dark-theme {
 .products__card {
   position: relative;
   background-color: var(--container-color);
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
   border: 1px solid var(--border-color);
   text-align: center;
   transition: .3s;
 }
 
 .products__img {
-  height: 125px;
+  height: 90px;
   margin-bottom: var(--mb-1);
 }
 
@@ -601,10 +601,10 @@ body.dark-theme {
 
 .products__button {
   background-color: var(--button-color);
-  padding: .4rem;
+  padding: .3rem;
   color: #fff;
   font-size: 1rem;
-  position: absolute;
+  position: center;
   right: 0;
   bottom: 0;
   transition: .3s;
