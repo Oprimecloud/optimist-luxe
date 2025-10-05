@@ -188,6 +188,7 @@ const products = [
     oldPrice: "25,000",
     price: "20,000",
     message: "Hello I want to order the hublot for ₦20,000",
+    description: "A classic Hublot Geneve watch, featuring a durable stainless steel case, elegant black dial, and water resistance. Perfect for both formal and casual occasions.",
   },
   {
     productName: "SKMEI",
@@ -195,6 +196,7 @@ const products = [
     oldPrice: "35,000",
     price: "25,000",
     message: "Hello I want to order the skmei for ₦25,000",
+    description: "SKMEI digital watch with shock resistance, LED display, and a comfortable silicone strap. Ideal for sports and everyday wear.",
   },
   {
     productName: "G-shock",
@@ -202,6 +204,7 @@ const products = [
     oldPrice: "50,000",
     price: "45,000",
     message: "Hello I want to order the G-shock for ₦45,000",
+    description: "G-shock rugged watch, known for its toughness, water resistance, and multifunctional features. Built for adventure and style.",
   },
   {
     productName: "poedagar",
@@ -209,6 +212,7 @@ const products = [
     oldPrice: "45,000",
     price: "35,000",
     message: "Hello I want to order the poedagar for ₦35,000",
+    description: "Poedagar luxury wristwatch with a gold-tone finish, luminous hands, and a scratch-resistant glass. A statement piece for any collection.",
   },
   {
     productName: "Valenzo",
@@ -216,6 +220,7 @@ const products = [
     oldPrice: "30,000",
     price: "27,000",
     message: "Hello I want to order the Valenzo for ₦27,000",
+    description: "Valenzo premium watch, featuring a minimalist design, leather strap, and reliable quartz movement. Perfect for everyday elegance.",
   },
   {
     productName: "tissort",
@@ -223,6 +228,7 @@ const products = [
     oldPrice: "25,000",
     price: "21,000",
     message: "Hello I want to order the hublot for ₦20,000",
+    description: "Tissort classic analog watch with a sleek silver case, date display, and comfortable fit. A timeless accessory for any wardrobe.",
   },
 ];
 
@@ -250,22 +256,111 @@ const products = [
 const productsContainer = document.getElementById("product_container");
 
 // Render Paystack payment buttons for all products
-products.map((product) => {
+products.map((product, idx) => {
   productsContainer.innerHTML += `
     <div id="${product.productName}" class="products__card">
       <img src="${product.imgUrl}" alt="${product.productName} luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
       <h3 class="products__title">${product.productName}</h3>
       <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦${product.oldPrice}</del></p>
       <span class="featured__price">₦${product.price}</span>
-      <div style="margin-top: 12px; display: flex; justify-content: center;">
+      <div style="margin-top: 12px; display: flex; justify-content: center; gap: 8px;">
         <button class="products__button paystack-pay-btn" 
           data-amount="${product.price.replace(/,/g, '')}" 
           data-product="${product.productName}">
-          <i class='bx bx-shopping-bag'></i> Pay Now
+          <i class='bx bx-shopping-bag'></i> Buy Now
         </button>
+        <button class="products__button quick-view-btn" 
+          data-idx="${idx}" style="background:#fff; color:#071018; border:1px solid #eee; border-radius:0; font-size:0.95rem; padding:0.4rem 1.1rem;">Quick View</button>
       </div>
     </div>
   `;
+});
+
+// Quick View Modal logic
+const modal = document.getElementById('productQuickViewModal');
+const closeModalBtn = document.getElementById('closeQuickViewModal');
+const modalImg = document.getElementById('modalProductImg');
+const modalName = document.getElementById('modalProductName');
+const modalOldPrice = document.getElementById('modalProductOldPrice');
+const modalPrice = document.getElementById('modalProductPrice');
+const modalDesc = document.getElementById('modalProductDesc');
+const modalPayBtn = document.getElementById('modalPaystackBtn');
+let currentModalProduct = null;
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('quick-view-btn')) {
+    const idx = e.target.getAttribute('data-idx');
+    const product = products[idx];
+    currentModalProduct = product;
+    modalImg.src = product.imgUrl;
+    modalName.textContent = product.productName;
+    modalOldPrice.textContent = product.oldPrice ? `₦${product.oldPrice}` : '';
+    modalPrice.textContent = `₦${product.price}`;
+  modalDesc.textContent = product.description || '';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+});
+
+closeModalBtn.addEventListener('click', function() {
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+});
+
+modal.addEventListener('click', function(e) {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+
+modalPayBtn.addEventListener('click', function() {
+  if (!currentModalProduct) return;
+  let email = '';
+  while (true) {
+    email = prompt('Enter your email address to pay for ' + currentModalProduct.productName + ':');
+    if (email === null) return; // Cancelled
+    if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) break;
+    alert('Please enter a valid email address.');
+  }
+  let address = '';
+  while (true) {
+    address = prompt('Enter your delivery address:');
+    if (address === null) return; // Cancelled
+    if (address.trim().length > 4) break;
+    alert('Please enter a valid delivery address.');
+  }
+  let handler = PaystackPop.setup({
+    key: 'pk_live_3703a34c4a28d7aefbe6e232f8629d438c59a5c8', // <-- REPLACE THIS with your Paystack public key
+    email: email,
+    amount: parseInt(currentModalProduct.price.replace(/,/g, '')) * 100, // Paystack expects amount in kobo
+    currency: 'NGN',
+    label: currentModalProduct.productName,
+    metadata: {
+      custom_fields: [
+        { display_name: 'Delivery Address', variable_name: 'delivery_address', value: address }
+      ]
+    },
+    callback: function(response){
+      // Send details to Formspree
+      fetch('https://formspree.io/f/mnngzvyv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          address: address,
+          product: currentModalProduct.productName,
+          price: currentModalProduct.price,
+          paystack_ref: response.reference
+        })
+      });
+      alert('Payment complete! Reference: ' + response.reference + '\nDelivery Address: ' + address);
+    },
+    onClose: function(){
+      alert('Transaction was not completed.');
+    }
+  });
+  handler.openIframe();
 });
 
 // Paystack payment handler for all product buttons
