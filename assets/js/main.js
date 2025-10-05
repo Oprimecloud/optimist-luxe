@@ -181,68 +181,120 @@ themeButton.addEventListener("click", () => {
 const htmlTemplate = `
 
 `;
-// const products = [
-//   {
-//     productName: "Hublot Geneve",
-//     imgUrl: "assets/img/hublotproduct1.jpg",
-//     oldPrice: "25,000",
-//     price: "20,000",
-//     message: "Hello I want to order the hublot for ₦20,000",
-//   },
-//   {
-//     productName: "SKMEI",
-//     imgUrl: "assets/img/skmeiproduct1.jpg",
-//     oldPrice: "35,000",
-//     price: "25,000",
-//     message: "Hello I want to order the skmei for ₦25,000",
-//   },
-//   {
-//     productName: "G-shock",
-//     imgUrl: "assets/img/g-shockproduct1.jpg",
-//     oldPrice: "50,000",
-//     price: "45,000",
-//     message: "Hello I want to order the G-shock for ₦45,000",
-//   },
-//   {
-//     productName: "poedagar",
-//     imgUrl: "assets/img/poadagarprod1.jpg",
-//     oldPrice: "45,000",
-//     price: "35,000",
-//     message: "Hello I want to order the poedagar for ₦35,000",
-//   },
-//   {
-//     productName: "Valenzo",
-//     imgUrl: "assets/img/valenzopro1.jpg",
-//     oldPrice: "30,000",
-//     price: "27,000",
-//     message: "Hello I want to order the Valenzo for ₦27,000",
-//   },
-//   {
-//     productName: "tissort",
-//     imgUrl: "assets/img/tissortprod1.jpg",
-//     oldPrice: "25,000",
-//     price: "21,000",
-//     message: "Hello I want to order the hublot for ₦20,000",
-//   },
-// ];
+const products = [
+  {
+    productName: "Hublot Geneve",
+    imgUrl: "assets/img/hublotproduct1.jpg",
+    oldPrice: "25,000",
+    price: "20,000",
+    message: "Hello I want to order the hublot for ₦20,000",
+  },
+  {
+    productName: "SKMEI",
+    imgUrl: "assets/img/skmeiproduct1.jpg",
+    oldPrice: "35,000",
+    price: "25,000",
+    message: "Hello I want to order the skmei for ₦25,000",
+  },
+  {
+    productName: "G-shock",
+    imgUrl: "assets/img/g-shockproduct1.jpg",
+    oldPrice: "50,000",
+    price: "45,000",
+    message: "Hello I want to order the G-shock for ₦45,000",
+  },
+  {
+    productName: "poedagar",
+    imgUrl: "assets/img/poadagarprod1.jpg",
+    oldPrice: "45,000",
+    price: "35,000",
+    message: "Hello I want to order the poedagar for ₦35,000",
+  },
+  {
+    productName: "Valenzo",
+    imgUrl: "assets/img/valenzopro1.jpg",
+    oldPrice: "30,000",
+    price: "27,000",
+    message: "Hello I want to order the Valenzo for ₦27,000",
+  },
+  {
+    productName: "tissort",
+    imgUrl: "assets/img/tissortprod1.jpg",
+    oldPrice: "25,000",
+    price: "21,000",
+    message: "Hello I want to order the hublot for ₦20,000",
+  },
+];
 
-const products = await getProducts()
+// const products = await getProducts()
+
+// const productsContainer = document.getElementById("product_container");
+
+// products.map((product) => {
+//   productsContainer.innerHTML += `
+//         <div id=${product.productName} class="products__card">
+//             <img src=${product.imgUrl} alt=${product.productName + " luxury watch"} style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
+//             <h3 class="products__title">${product.productName}</h3>
+//             <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦${product.oldPrice}</del></p>
+//             <span class="featured__price">₦${product.price}</span>
+//             <button class="products__button">
+//                 <a href="https://wa.me/2348115672822?text=${product.message}" 
+//                         class='bx bx-shopping-bag'
+//                         target="_blank">  
+//                 </a>
+//             </button>
+//         </div>
+//     `;
+// });
 
 const productsContainer = document.getElementById("product_container");
 
+// Render Paystack payment buttons for all products
 products.map((product) => {
   productsContainer.innerHTML += `
-        <div id=${product.productName} class="products__card">
-            <img src=${product.imgUrl} alt=${product.productName + " luxury watch"} style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
-            <h3 class="products__title">${product.productName}</h3>
-            <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦${product.oldPrice}</del></p>
-            <span class="featured__price">₦${product.price}</span>
-            <button class="products__button">
-                <a href="https://wa.me/2348115672822?text=${product.message}" 
-                        class='bx bx-shopping-bag'
-                        target="_blank">  
-                </a>
-            </button>
-        </div>
-    `;
+    <div id="${product.productName}" class="products__card">
+      <img src="${product.imgUrl}" alt="${product.productName} luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
+      <h3 class="products__title">${product.productName}</h3>
+      <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦${product.oldPrice}</del></p>
+      <span class="featured__price">₦${product.price}</span>
+      <div style="margin-top: 12px; display: flex; justify-content: center;">
+        <button class="products__button paystack-pay-btn" 
+          data-amount="${product.price.replace(/,/g, '')}" 
+          data-product="${product.productName}">
+          <i class='bx bx-shopping-bag'></i> Pay Now
+        </button>
+      </div>
+    </div>
+  `;
+});
+
+// Paystack payment handler for all product buttons
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.paystack-pay-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      let amount = btn.getAttribute('data-amount');
+      let product = btn.getAttribute('data-product');
+      let email = '';
+      while (true) {
+        email = prompt('Enter your email address to pay for ' + product + ':');
+        if (email === null) return; // Cancelled
+        if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) break;
+        alert('Please enter a valid email address.');
+      }
+      let handler = PaystackPop.setup({
+        key: 'pk_live_3703a34c4a28d7aefbe6e232f8629d438c59a5c8', // <-- REPLACE THIS with your Paystack public key
+        email: email,
+        amount: parseInt(amount, 10) * 100, // Paystack expects amount in kobo
+        currency: 'NGN',
+        label: product,
+        callback: function(response){
+          alert('Payment complete! Reference: ' + response.reference);
+        },
+        onClose: function(){
+          alert('Transaction was not completed.');
+        }
+      });
+      handler.openIframe();
+    });
+  });
 });
