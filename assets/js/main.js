@@ -1,4 +1,4 @@
-import { getProducts, addReview, getReviews } from './firebase.js';
+import { getProducts, addReview, getReviews, uploadReviewImage } from './firebase.js';
 // ========== REVIEW STAR & COMMENT FEATURE ========== //
 document.addEventListener('DOMContentLoaded', () => {
   const stars = document.querySelectorAll('#reviewForm .star');
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reviewForm = document.getElementById('reviewForm');
   const reviewComment = document.getElementById('reviewComment');
   const reviewsList = document.getElementById('reviewsList');
+  const reviewImageInput = document.getElementById('reviewImage');
 
   // Star hover and select UI
   stars.forEach((star, idx) => {
@@ -32,13 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
     reviewForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const comment = reviewComment.value.trim();
+      const imageFile = reviewImageInput && reviewImageInput.files && reviewImageInput.files[0];
       if (selectedStars === 0 || !comment) {
         alert('Please select a star rating and enter a comment.');
         return;
       }
+      let imageUrl = null;
       try {
-        await addReview({ stars: selectedStars, comment });
+        if (imageFile) {
+          imageUrl = await uploadReviewImage(imageFile);
+        }
+        await addReview({ stars: selectedStars, comment, imageUrl });
         reviewComment.value = '';
+        if (reviewImageInput) reviewImageInput.value = '';
         selectedStars = 0;
         highlightStars(0);
         loadReviews();
@@ -59,11 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       reviewsList.innerHTML = reviews.map(r => `
-        <div style="background:#fff;padding:1rem;margin-bottom:1rem;border-radius:6px;box-shadow:0 2px 8px #0001;">
+        <div style="background:var(--review-bg,#fff);padding:1rem;margin-bottom:1rem;border-radius:6px;box-shadow:0 2px 8px #0001;">
           <div style="color:#FFD700;font-size:1.2rem;">
             ${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}
           </div>
           <div style="margin:0.5rem 0 0.2rem 0;">${r.comment.replace(/</g, '&lt;')}</div>
+          ${r.imageUrl ? `<div style='margin-top:0.7rem;'><img src='${r.imageUrl}' alt='Review image' style='max-width:120px;max-height:120px;border-radius:8px;box-shadow:0 1px 4px #0002;'></div>` : ''}
         </div>
       `).join('');
     } catch (err) {
