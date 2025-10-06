@@ -285,6 +285,7 @@ const modalOldPrice = document.getElementById('modalProductOldPrice');
 const modalPrice = document.getElementById('modalProductPrice');
 const modalDesc = document.getElementById('modalProductDesc');
 const modalPayBtn = document.getElementById('modalPaystackBtn');
+const relatedProductsCarousel = document.getElementById('relatedProductsCarousel');
 let currentModalProduct = null;
 
 document.addEventListener('click', function(e) {
@@ -296,7 +297,28 @@ document.addEventListener('click', function(e) {
     modalName.textContent = product.productName;
     modalOldPrice.textContent = product.oldPrice ? `₦${product.oldPrice}` : '';
     modalPrice.textContent = `₦${product.price}`;
-  modalDesc.textContent = product.description || '';
+    modalDesc.textContent = product.description || '';
+    // Related products logic
+    if (relatedProductsCarousel) {
+      relatedProductsCarousel.innerHTML = '';
+      // Pick 3 related products (excluding current)
+      const related = products.filter((p, i) => i != idx).slice(0, 3);
+      related.forEach((rel, relIdx) => {
+        const relDiv = document.createElement('div');
+        relDiv.style.minWidth = '90px';
+        relDiv.style.cursor = 'pointer';
+        relDiv.style.textAlign = 'center';
+        relDiv.innerHTML = `
+          <img src="${rel.imgUrl}" alt="${rel.productName}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-bottom:4px;">
+          <div style="font-size:0.85rem;color:#222;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${rel.productName}</div>
+        `;
+        relDiv.addEventListener('click', function() {
+          // Simulate click on the corresponding quick view button
+          document.querySelectorAll('.quick-view-btn')[products.findIndex(p => p.productName === rel.productName)].click();
+        });
+        relatedProductsCarousel.appendChild(relDiv);
+      });
+    }
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
