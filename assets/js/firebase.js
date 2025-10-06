@@ -20,12 +20,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAc3D8DQMbZ9vem-oYmHIxs6jbgcLbl4nQ",
-  authDomain: "optimistluxe-c5c71.firebaseapp.com",
-  projectId: "optimistluxe-c5c71",
-  storageBucket: "optimistluxe-c5c71.firebasestorage.app",
-  messagingSenderId: "843154964897",
-  appId: "1:843154964897:web:ae4cff1213957d6c04cbe0",
+  apiKey: "AIzaSyD8Y3x1_yY0vdDLqgYc5tv7qo0JnbsAWyo",
+  authDomain: "optimistluxe-c3702.firebaseapp.com",
+  projectId: "optimistluxe-c3702",
+  storageBucket: "optimistluxe-c3702.firebasestorage.app",
+  messagingSenderId: "997012157455",
+  appId: "1:997012157455:web:48d687beb32762317c9f7a"
 };
 
 // Initialize Firebase
