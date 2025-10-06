@@ -1,64 +1,9 @@
-.footer__list a {
-  color: #000;
-  text-decoration: underline;
-  transition: color 0.2s;
-}
-.dark-theme .footer__list a {
-  color: #fff;
-}
-.dark-theme .instagram .section__title,
-.dark-theme .instagram,
-.dark-theme .instagram * {
-  color: var(--title-color) !important;
-}
-/*=============== INSTAGRAM FEED ===============*/
-.instagram__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 14px;
-  justify-items: center;
-  align-items: center;
-  max-width: 700px;
-  margin: 0 auto 1.5rem auto;
-}
-.instagram__container a {
-  display: block;
-  width: 100%;
-  max-width: 140px;
-  aspect-ratio: 1/1;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  background: var(--container-color);
-  transition: box-shadow 0.2s;
-}
-.instagram__container a:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-}
-.instagram__container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: filter 0.2s;
-}
-.dark-theme .instagram__container a {
-  background: var(--container-color);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-}
-.dark-theme .instagram__container img {
-  filter: brightness(0.85) contrast(1.08);
-}
-.instagram .section__title {
-  color: var(--title-color);
-}
-.instagram .button {
-  background: var(--first-color);
-  color: #fff;
-}
-.dark-theme .instagram .button {
-  background: var(--button-color);
-  color: #fff;
+/*=============== BLOG PAGE STYLES ===============*/
+.blog__text {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 1.5rem 0 2rem 0;
 }
 /*=============== PRODUCT QUICK VIEW MODAL ===============*/
 .modal {
