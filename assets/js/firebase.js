@@ -23,7 +23,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyD8Y3x1_yY0vdDLqgYc5tv7qo0JnbsAWyo",
   authDomain: "optimistluxe-c3702.firebaseapp.com",
   projectId: "optimistluxe-c3702",
-  storageBucket: "optimistluxe-c3702.firebasestorage.app",
+  storageBucket: "optimistluxe-c3702.appspot.com",
   messagingSenderId: "997012157455",
   appId: "1:997012157455:web:48d687beb32762317c9f7a"
 };
