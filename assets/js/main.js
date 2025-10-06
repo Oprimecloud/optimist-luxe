@@ -1,4 +1,78 @@
-import {getProducts} from './firebase.js'
+import { getProducts, addReview, getReviews } from './firebase.js';
+// ========== REVIEW STAR & COMMENT FEATURE ========== //
+document.addEventListener('DOMContentLoaded', () => {
+  const stars = document.querySelectorAll('#reviewForm .star');
+  let selectedStars = 0;
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewComment = document.getElementById('reviewComment');
+  const reviewsList = document.getElementById('reviewsList');
+
+  // Star hover and select UI
+  stars.forEach((star, idx) => {
+    star.addEventListener('mouseover', () => {
+      highlightStars(idx + 1);
+    });
+    star.addEventListener('mouseout', () => {
+      highlightStars(selectedStars);
+    });
+    star.addEventListener('click', () => {
+      selectedStars = idx + 1;
+      highlightStars(selectedStars);
+    });
+  });
+
+  function highlightStars(count) {
+    stars.forEach((star, i) => {
+      star.style.color = i < count ? '#FFD700' : '#ccc';
+    });
+  }
+
+  // Submit review
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const comment = reviewComment.value.trim();
+      if (selectedStars === 0 || !comment) {
+        alert('Please select a star rating and enter a comment.');
+        return;
+      }
+      try {
+        await addReview({ stars: selectedStars, comment });
+        reviewComment.value = '';
+        selectedStars = 0;
+        highlightStars(0);
+        loadReviews();
+      } catch (err) {
+        alert('Error submitting review. Please try again.');
+      }
+    });
+  }
+
+  // Load and display reviews
+  async function loadReviews() {
+    if (!reviewsList) return;
+    reviewsList.innerHTML = '<p>Loading reviews...</p>';
+    try {
+      const reviews = await getReviews();
+      if (reviews.length === 0) {
+        reviewsList.innerHTML = '<p>No reviews yet. Be the first to leave one!</p>';
+        return;
+      }
+      reviewsList.innerHTML = reviews.map(r => `
+        <div style="background:#fff;padding:1rem;margin-bottom:1rem;border-radius:6px;box-shadow:0 2px 8px #0001;">
+          <div style="color:#FFD700;font-size:1.2rem;">
+            ${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}
+          </div>
+          <div style="margin:0.5rem 0 0.2rem 0;">${r.comment.replace(/</g, '&lt;')}</div>
+        </div>
+      `).join('');
+    } catch (err) {
+      reviewsList.innerHTML = '<p>Could not load reviews.</p>';
+    }
+  }
+
+  loadReviews();
+});
 
 
 

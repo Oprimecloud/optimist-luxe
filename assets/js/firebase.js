@@ -7,6 +7,10 @@ import {
   doc,
   collection,
   getDocs,
+  addDoc,
+  serverTimestamp,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -23,18 +27,37 @@ const app = initializeApp(firebaseConfig);
 // initial cloud firestore
 const db = getFirestore(app);
 
+
+// Product fetching
 async function getProducts() {
   const productsCollection = collection(db, "products");
-
   const products = await getDocs(productsCollection);
-
   const productsArray = [];
-
   products.forEach((doc) => {
     productsArray.push(doc.data());
   });
-
-  return productsArray
+  return productsArray;
 }
 
-export { getProducts };
+// Review functions
+async function addReview({ stars, comment }) {
+  const reviewsCollection = collection(db, "reviews");
+  await addDoc(reviewsCollection, {
+    stars,
+    comment,
+    createdAt: serverTimestamp(),
+  });
+}
+
+async function getReviews() {
+  const reviewsCollection = collection(db, "reviews");
+  const q = query(reviewsCollection, orderBy("createdAt", "desc"));
+  const snapshot = await getDocs(q);
+  const reviews = [];
+  snapshot.forEach((doc) => {
+    reviews.push(doc.data());
+  });
+  return reviews;
+}
+
+export { getProducts, addReview, getReviews };
