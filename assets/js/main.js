@@ -266,6 +266,7 @@ const htmlTemplate = `
 const products = [
   {
     productName: "Hublot Geneve",
+    id: "hublot-geneve",
     imgUrl: "assets/img/hublotproduct1.jpg",
     oldPrice: "25,000",
     price: "20,000",
@@ -274,6 +275,7 @@ const products = [
   },
   {
     productName: "SKMEI",
+    id: "skmei",
     imgUrl: "assets/img/skmeiproduct1.jpg",
     oldPrice: "35,000",
     price: "25,000",
@@ -282,6 +284,7 @@ const products = [
   },
   {
     productName: "G-shock",
+    id: "g-shock",
     imgUrl: "assets/img/g-shockproduct1.jpg",
     oldPrice: "50,000",
     price: "45,000",
@@ -290,6 +293,7 @@ const products = [
   },
   {
     productName: "poedagar",
+    id: "poedagar",
     imgUrl: "assets/img/poadagarprod1.jpg",
     oldPrice: "45,000",
     price: "35,000",
@@ -298,6 +302,7 @@ const products = [
   },
   {
     productName: "Valenzo",
+    id: "valenzo",
     imgUrl: "assets/img/valenzopro1.jpg",
     oldPrice: "30,000",
     price: "27,000",
@@ -306,6 +311,7 @@ const products = [
   },
   {
     productName: "tissort",
+    id: "tissort",
     imgUrl: "assets/img/tissortprod1.jpg",
     oldPrice: "25,000",
     price: "21,000",
@@ -339,8 +345,9 @@ const productsContainer = document.getElementById("product_container");
 
 // Render Paystack payment buttons for all products
 products.map((product, idx) => {
+  const prodId = product.id || product.productName.toLowerCase().replace(/\s+/g, '-');
   productsContainer.innerHTML += `
-    <div id="${product.productName}" class="products__card">
+    <div id="${prodId}" class="products__card">
       <img src="${product.imgUrl}" alt="${product.productName} luxury watch" style="border-radius: 9px; width: 75%;height: 60%;" class="products__img">
       <h3 class="products__title">${product.productName}</h3>
       <p style="margin:5px 0; font-weight:bold; color: #999"><del>₦${product.oldPrice}</del></p>
