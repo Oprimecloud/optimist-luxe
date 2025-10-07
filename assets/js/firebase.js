@@ -1,3 +1,5 @@
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 // Add Firebase products that you want to use
@@ -46,38 +48,3 @@ async function getProducts() {
   });
   return productsArray;
 }
-
-// Review functions
-
-// Upload image to Firebase Storage and return URL
-async function uploadReviewImage(file) {
-  if (!file) return null;
-  const fileName = `review_${Date.now()}_${file.name}`;
-  const imgRef = storageRef(storage, `review_images/${fileName}`);
-  await uploadBytes(imgRef, file);
-  return await getDownloadURL(imgRef);
-}
-
-// Add review with optional image
-async function addReview({ stars, comment, imageUrl }) {
-  const reviewsCollection = collection(db, "reviews");
-  await addDoc(reviewsCollection, {
-    stars,
-    comment,
-    imageUrl: imageUrl || null,
-    createdAt: serverTimestamp(),
-  });
-}
-
-async function getReviews() {
-  const reviewsCollection = collection(db, "reviews");
-  const q = query(reviewsCollection, orderBy("createdAt", "desc"));
-  const snapshot = await getDocs(q);
-  const reviews = [];
-  snapshot.forEach((doc) => {
-    reviews.push(doc.data());
-  });
-  return reviews;
-}
-
-export { getProducts, addReview, getReviews, uploadReviewImage };

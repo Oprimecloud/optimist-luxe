@@ -1,86 +1,3 @@
-import { getProducts, addReview, getReviews, uploadReviewImage } from './firebase.js';
-// ========== REVIEW STAR & COMMENT FEATURE ========== //
-document.addEventListener('DOMContentLoaded', () => {
-  const stars = document.querySelectorAll('#reviewForm .star');
-  let selectedStars = 0;
-  const reviewForm = document.getElementById('reviewForm');
-  const reviewComment = document.getElementById('reviewComment');
-  const reviewsList = document.getElementById('reviewsList');
-  const reviewImageInput = document.getElementById('reviewImage');
-
-  // Star hover and select UI
-  stars.forEach((star, idx) => {
-    star.addEventListener('mouseover', () => {
-      highlightStars(idx + 1);
-    });
-    star.addEventListener('mouseout', () => {
-      highlightStars(selectedStars);
-    });
-    star.addEventListener('click', () => {
-      selectedStars = idx + 1;
-      highlightStars(selectedStars);
-    });
-  });
-
-  function highlightStars(count) {
-    stars.forEach((star, i) => {
-      star.style.color = i < count ? '#FFD700' : '#ccc';
-    });
-  }
-
-  // Submit review
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const comment = reviewComment.value.trim();
-      const imageFile = reviewImageInput && reviewImageInput.files && reviewImageInput.files[0];
-      if (selectedStars === 0 || !comment) {
-        alert('Please select a star rating and enter a comment.');
-        return;
-      }
-      let imageUrl = null;
-      try {
-        if (imageFile) {
-          imageUrl = await uploadReviewImage(imageFile);
-        }
-        await addReview({ stars: selectedStars, comment, imageUrl });
-        reviewComment.value = '';
-        if (reviewImageInput) reviewImageInput.value = '';
-        selectedStars = 0;
-        highlightStars(0);
-        loadReviews();
-      } catch (err) {
-        alert('Error submitting review. Please try again.');
-      }
-    });
-  }
-
-  // Load and display reviews
-  async function loadReviews() {
-    if (!reviewsList) return;
-    reviewsList.innerHTML = '<p>Loading reviews...</p>';
-    try {
-      const reviews = await getReviews();
-      if (reviews.length === 0) {
-        reviewsList.innerHTML = '<p>No reviews yet. Be the first to leave one!</p>';
-        return;
-      }
-      reviewsList.innerHTML = reviews.map(r => `
-        <div style="background:var(--review-bg,#fff);padding:1rem;margin-bottom:1rem;border-radius:6px;box-shadow:0 2px 8px #0001;">
-          <div style="color:#FFD700;font-size:1.2rem;">
-            ${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}
-          </div>
-          <div style="margin:0.5rem 0 0.2rem 0;">${r.comment.replace(/</g, '&lt;')}</div>
-          ${r.imageUrl ? `<div style='margin-top:0.7rem;'><img src='${r.imageUrl}' alt='Review image' style='max-width:120px;max-height:120px;border-radius:8px;box-shadow:0 1px 4px #0002;'></div>` : ''}
-        </div>
-      `).join('');
-    } catch (err) {
-      reviewsList.innerHTML = '<p>Could not load reviews.</p>';
-    }
-  }
-
-  loadReviews();
-});
 
 
 
@@ -410,6 +327,14 @@ document.addEventListener('click', function(e) {
     }
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    // Notify other modules (reviews) which product was opened
+    try {
+      const prodId = product.id || product.productName.toLowerCase().replace(/\s+/g, '-');
+      const evt = new CustomEvent('modalProductOpened', { detail: { productId: prodId } });
+      document.dispatchEvent(evt);
+    } catch (err) {
+      console.warn('Could not dispatch modalProductOpened', err);
+    }
   }
 });
 

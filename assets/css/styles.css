@@ -1397,3 +1397,31 @@ body.dark-theme {
         padding: 30px 20px;
       }
     }
+
+/* =============== REVIEWS =============== */
+.reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.review-card {
+  background: var(--container-color);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+.review-meta {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.review-meta .name { font-weight:600; color:var(--title-color); }
+.review-meta .rating { color: #d4a017; font-weight:700; }
+.review-text { color: var(--text-color); margin-bottom:8px; }
+.review-image { max-width:120px; border-radius:8px; display:block; margin-top:8px; }
+.review-delete { background:transparent; color:#c0392b; border:1px solid #f2dede; padding:6px 8px; border-radius:6px; cursor:pointer; }
+.review-delete:hover{ background:#f8eaea }
+.contact-form input[type="file"] { padding:6px 4px; }
+.contact-form #imagePreview img{ max-width:100px; border-radius:8px; display:block; }
