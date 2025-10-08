@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QC1PKD93F9"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-QC1PKD93F9');
+                </script>
   <url>
     <loc>https://optimistluxe.shop/</loc>
     <lastmod>2025-10-03</lastmod>
