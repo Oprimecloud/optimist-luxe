@@ -1435,7 +1435,7 @@ body.dark-theme {
   scroll-behavior: smooth; /* smooth sliding */
 }
 
-.review-card {
+.review-card1 {
   flex: 0 0 80%; /* each card takes most of the width */
   max-width: 350px;
   background-color: #fff;
