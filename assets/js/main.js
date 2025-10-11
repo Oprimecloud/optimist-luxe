@@ -202,7 +202,7 @@ const products = [
   {
     productName: "SKMEI",
     id: "skmei",
-    imgUrl: "assets/img/SKi.png",
+    imgUrl: "assets/img/ski2.png",
     oldPrice: "35,000",
     price: "25,000",
     message: "Hello I want to order the skmei for ₦25,000",
@@ -211,7 +211,7 @@ const products = [
   {
     productName: "SKMEI",
     id: "skmei",
-    imgUrl: "assets/img/SKi2.png",
+    imgUrl: "assets/img/SKI.png",
     oldPrice: "35,000",
     price: "25,000",
     message: "Hello I want to order the skmei for ₦25,000",
@@ -411,7 +411,7 @@ products.map((product, idx) => {
           <i class='bx bx-shopping-bag'></i> Buy Now
         </button>
         <button class="products__button quick-view-btn" 
-          data-idx="${idx}" style="background:#fff; color:#071018; border:1px solid #eee; border-radius:0; font-size:0.95rem; padding:0.4rem 1.1rem;">Quick View</button>
+          data-idx="${idx}" style="background:#fff; color:#071018; border:1px solid #eee; border-radius:0; font-size:0.95rem; padding:0.2rem 1.1rem;">Quick View</button>
       </div>
     </div>
   `;
